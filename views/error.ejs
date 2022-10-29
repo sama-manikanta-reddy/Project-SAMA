@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%=err.message%>
+    </title>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/./stylesheets/navbarStyles.css">
+    <link rel="stylesheet" href="/./stylesheets/layoutStyle.css">
+    <link rel="stylesheet" href="/./stylesheets/ErrorStyles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,300&family=Freehand&family=Nunito+Sans&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <%- include('./partials/navbar.ejs') %>
+        <div class="container">
+            <div class="error-card">
+                <img src="/./Images/<%=err.status===404?'pagenotfound.jpg':'somethingwentwrong.png'%>" alt=""
+                    class="pagenotfound">
+                <div class="error-data">
+                    <% if(err.status===404){ %>
+                        <h3 class="err-message">
+                            <%=err.message%>
+                        </h3>
+                        <% } %>
+                            <% if (process.env.NODE_ENV !=='production' ) { %>
+                                <div class="err-stack">
+                                    <%= err.stack %>
+                                </div>
+                                <% } %>
+                </div>
+
+            </div>
+        </div>
+</body>
+
+</html>

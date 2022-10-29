@@ -1,0 +1,21 @@
+.flash-message {
+    font-family: 'Barlow', sans-serif;
+    width: 70%;
+    background: #e0e0e0;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+}
+
+.message {
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+.btn-close {
+    border: none;
+    outline: none;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    float: right;
+    margin-top: 0.4rem;
+}

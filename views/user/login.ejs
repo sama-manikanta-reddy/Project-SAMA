@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./stylesheets/navbarStyles.css">
+    <link rel="stylesheet" href="./stylesheets/layoutStyle.css">
+    <link rel="stylesheet" href="./stylesheets/flashStyles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,300&family=Freehand&family=Nunito+Sans&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <%- include('../partials/navbar.ejs') %>
+        <div class="container">
+            <%- include('../partials/flash.ejs') %>
+                <div class="login-card">
+                    <div class="login-card-body">
+                        <h2 class="login-card-title">Login</h2>
+                        <form action="/login" method="post" class="needs-validation login-form">
+                            <section>
+                                <label for="user[username]" class="form-label">Username </label>
+                                <input type="text" name="username" id="user[username]" class="form-control" required>
+                            </section>
+                            <section>
+                                <label for="user[password]" class="form-label">Password </label>
+                                <input type="password" name="password" id="user[password]" class="form-control"
+                                    required>
+                            </section>
+                            <section>
+                                <button type="submit" class="login-btn">Login</button>
+                                <a href="/register" class="link">Don'thave an account ?<span style="display: block;">
+                                        Register</span></a>
+                            </section>
+
+                        </form>
+                    </div>
+                </div>
+        </div>
+        <script src="./javascript/closeFlash.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+.user-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-card {
+    margin-top: 1.5rem;
+    background-color: white;
+    width: 90%;
+    border-radius: 5px;
+    font-family: 'Barlow', sans-serif;
+}
+
+.blank {
+    background-color: rgb(224, 224, 224);
+    height: 250px;
+    border-radius: 5px;
+}
+
+.pic-svg {
+    background-color: rgb(167, 144, 144);
+    border-radius: 100%;
+    width: 140px;
+    height: 140px;
+    padding: 10px;
+    margin-top: -70px;
+    margin-left: 2.5rem;
+}
+
+.name-card {
+    margin-top: -105px;
+    margin-left: 13rem;
+}
+
+.name {
+    margin-bottom: 0rem;
+}
+
+.username {
+    margin-top: 0rem;
+    color: rgb(98, 98, 98);
+}
+
+.user-info {
+    margin: 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.data {
+    border: 1px solid rgb(183, 183, 183);
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    width: 70%;
+}
+
+.data-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.request-data,
+.friends-data {
+    border: 1px solid rgb(183, 183, 183);
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    width: 40%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    background-color: #e0e0e0;
+    margin-bottom: 1rem;
+}
+
+.requests,
+.friends-list {
+    overflow-y: scroll;
+    max-height: 300px;
+    margin-bottom: 1rem;
+}
+
+.friend-link {
+    text-decoration: none;
+}
+
+.request {
+    border: 2px solid rgb(167, 144, 144);
+    background-color: rgb(167, 144, 144);
+    border-radius: 5px;
+    padding: 0.5rem 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.request-option {
+    margin-top: 0.5rem;
+    display: flex;
+    margin-bottom: 0.2rem;
+}
+
+.request-link {
+    text-decoration: none;
+    color: white;
+}
+
+.reject-btn,
+.accept-btn {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 0.5rem 1.5rem;
+    margin-right: 0.5rem;
+    background-color: white;
+}
+
+.reject-btn:hover,
+.accept-btn:hover {
+    background-color: black;
+    color: white;
+}
+
+.delete-btn,
+.addFriend-btn {
+    font-size: 1.5rem;
+    font-family: 'Barlow', sans-serif;
+    padding: 0.5rem 1.5rem;
+    background-color: black;
+    color: white;
+    outline: none;
+    border: none;
+    display: block;
+    margin: 2.2rem auto 1rem auto;
+    cursor: pointer;
+    border-radius: 5px;
+}

@@ -1,0 +1,8 @@
+# Ignore node_modules folder
+node_modules
+# Ignore files related to API keys
+.env
+# Ignore Mac system files
+.DS_store
+# Ignore SASS config files
+.sass-cache

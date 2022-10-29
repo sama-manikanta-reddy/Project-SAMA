@@ -1,0 +1,33 @@
+.error-card {
+    width: 60%;
+    padding: 1rem 1.5rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-top: 2rem;
+    font-family: 'Barlow', sans-serif;
+}
+
+.pagenotfound {
+    width: 100%;
+}
+
+.error-data {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.err-message {
+    font-size: 2rem;
+    font-weight: 900;
+    align-self: center;
+}
+
+.err-stack {
+    width: 96%;
+    word-wrap: break-word;
+    background-color: #ffc8c8;
+    padding: 1rem 0.7rem;
+    border-radius: 10px;
+}
