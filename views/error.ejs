@@ -28,16 +28,16 @@
                 <img src="/./Images/<%=err.status===404?'pagenotfound.jpg':'somethingwentwrong.png'%>" alt=""
                     class="pagenotfound">
                 <div class="error-data">
-                    <% if(err.status===404){ %>
-                        <h3 class="err-message">
-                            <%=err.message%>
-                        </h3>
+
+                    <h3 class="err-message">
+                        <%=err.message%>
+                    </h3>
+
+                    <% if (process.env.NODE_ENV !=='production' ) { %>
+                        <div class="err-stack">
+                            <%= err.stack %>
+                        </div>
                         <% } %>
-                            <% if (process.env.NODE_ENV !=='production' ) { %>
-                                <div class="err-stack">
-                                    <%= err.stack %>
-                                </div>
-                                <% } %>
                 </div>
 
             </div>

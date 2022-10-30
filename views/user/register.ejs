@@ -29,11 +29,12 @@
                             <section class="col-2">
                                 <label for="user[username]" class="form-label">Username </label>
                                 <input type="text" name="username" id="user[username]" class="form-control"
-                                    minlength="8" required>
+                                    minlength="8" maxlength="20" required>
                             </section>
                             <section class="col-2">
                                 <label for="user[name]" class="form-label">Name </label>
-                                <input type="text" name="name" id="user[name]" class="form-control" required>
+                                <input type="text" name="name" id="user[name]" class="form-control" minlength="2"
+                                    required>
                             </section>
                         </div>
                         <div class="row">

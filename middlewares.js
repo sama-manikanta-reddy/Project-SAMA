@@ -1,6 +1,7 @@
 import User from "./models/user.js";
 import RequestTab from "./models/request.js";
-import Friend from "./models/friends.js";
+import { userSchema } from "./SchemaWithJOIPlus.js";
+import { ExpressError } from "./ExpressError.js";
 const nocache = function (req, res, next) {
     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
     res.header('Expires', '-1');
@@ -57,4 +58,14 @@ function wrapAsync(fn) {
     }
 }
 
-export { nocache, requireLogin, assignResLocals, sessionConfig, wrapAsync };
+const validateUser = (req, res, next) => {
+    const result = userSchema.validate(req.body);
+    if (result.error) {
+        throw new ExpressError(result.error.details.map(el => el.message).join(','), 400);
+    } else {
+        console.log('Middleware works'); //To check whether it works or not
+        next();
+    }
+}
+
+export { nocache, requireLogin, assignResLocals, sessionConfig, wrapAsync, validateUser };
