@@ -3,6 +3,8 @@ if (process.env.NODE_ENV !== 'production') {
     dotenv.config()
 }
 import express from "express";
+import { createServer } from "http";
+import { Server } from "socket.io";
 import mongoose from "mongoose";
 import path from "path";
 import { fileURLToPath } from 'url';
@@ -15,6 +17,7 @@ import { router as userRoutes } from "./Routes/userRoutes.js";
 import { ExpressError } from "./ExpressError.js";
 
 const app = express();
+const httpServer = createServer(app);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -46,6 +49,6 @@ app.use((err, req, res, next) => {
     res.status(status).render('./error.ejs', { err });
 });
 
-app.listen(process.env.PORT, () => {
+h.listen(process.env.PORT, () => {
     console.log('Listening on port 3000');
 });

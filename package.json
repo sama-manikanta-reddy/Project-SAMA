@@ -21,6 +21,7 @@
     "joi-plus": "^1.4.0",
     "method-override": "^3.0.0",
     "mongoose": "^6.6.5",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "socket.io": "^4.5.3"
   }
 }
