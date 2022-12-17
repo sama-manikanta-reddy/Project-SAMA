@@ -1,3 +1,7 @@
+/*
+Project name : Small Authenticated Mail App
+*/
+
 import * as dotenv from 'dotenv';
 if (process.env.NODE_ENV !== 'production') {
     dotenv.config()
@@ -12,6 +16,7 @@ import flash from 'connect-flash';
 import { assignResLocals, sessionConfig } from "./middlewares.js";
 import { router as basicFunc } from "./Routes/basicFunction.js";
 import { router as userRoutes } from "./Routes/userRoutes.js";
+import { router as mailRoutes } from "./Routes/mailRoutes.js";
 import { ExpressError } from "./ExpressError.js";
 
 const app = express();
@@ -35,6 +40,7 @@ app.use(assignResLocals);
 
 app.use('/', basicFunc);
 app.use('/user/:id', userRoutes);
+app.use('/user/:id/mailbox', mailRoutes);
 
 app.all('*', (req, res, next) => {
     throw new ExpressError('Page not Found', 404);
@@ -49,3 +55,10 @@ app.use((err, req, res, next) => {
 app.listen(process.env.PORT, () => {
     console.log('Listening on port 3000');
 });
+
+// TimeStamp error
+// More Features can be added
+// 1. Only friends can send Mail
+// 2. Block mails from a certain person
+// 3. indicate  when a New mail is recieved
+// 4. indicate when a new friend request is recieved

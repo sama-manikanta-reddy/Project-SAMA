@@ -5,7 +5,7 @@ import Friend from "./models/friends.js";
 import RequestTab from "./models/request.js";
 
 const app = express();
-mongoose.connect('mongodb://localhost:27017/AuthProject')
+mongoose.connect('mongodb://localhost:27017/Project_ACR')
     .then(() => { console.log('Connected to database') })
     .catch((e) => { console.log('Cannot connect to database', e) });
 const seeddb = async () => {

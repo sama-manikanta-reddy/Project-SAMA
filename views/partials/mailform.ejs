@@ -1,0 +1,19 @@
+<form action="/user/<%=currentUser._id%>/mailbox/mail" method="post">
+    <section>
+        <label for="from" class="compose-label">From : </label>
+        <input type="text" id="to" name="to" class="compose-input" value="<%= currentUser.name %> " disabled>
+        </span>
+    </section>
+    <section>
+        <label for="to" class="compose-label">To : </label>
+        <input type="text" id="to" name="to" class="compose-input">
+    </section>
+    <hr>
+
+    <section>
+        <label for="mail-data" class="compose-label">Compose : </label>
+        <textarea name="mailData" id="mail-data" cols="30" rows="10" class="compose-data" required minlength="10"
+            maxlength="300"></textarea>
+    </section>
+    <button type="submit" class="mail-send">Send</button>
+</form>

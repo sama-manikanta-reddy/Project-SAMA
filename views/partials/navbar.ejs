@@ -20,6 +20,7 @@
                         </section>
                     </form>
                     <li class="nav-link"> <a href="/<%=currentUser?'user/'+currentUser._id:''%> ">Home</a> </li>
+                    <li class="nav-link"> <a href="/user/<%=currentUser._id%>/mailbox">MailBox</a></li>
                     <li class="nav-link">
                         <form action="/logout" method="post"><button type="submit"
                                 class="btn btn-success">Logout</button></form>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        mails
+    </title>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/./stylesheets/navbarStyles.css">
+    <link rel="stylesheet" href="/./stylesheets/layoutStyle.css">
+    <link rel="stylesheet" href="/./stylesheets/mailboxStyles.css">
+    <link rel="stylesheet" href="/./stylesheets/flashStyles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,300&family=Freehand&family=Nunito+Sans&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <%- include('../partials/navbar.ejs') %>
+        <div class="container">
+            <%- include('../partials/flash.ejs') %>
+                <div class="mailbox">
+                    <div class="mailsBar">
+                        <div class="compose">
+                            <a href="/user/<%=id%>/mailbox/compose" id="composeBtn" class="compose-link">Compose</a>
+                        </div>
+                        <div class="recieved">
+                            <% if(recievedMails){ %>
+                                <% for(let i=recievedMails.length-1 ; i>=0;i-- ){ %>
+                                    <a href="/user/<%=currentUser._id%>/mailbox/<%=recievedMails[i]._id%>"
+                                        class="viewmail-link">
+                                        <div class="mailItem <%= recievedMails[i].read?" read-mail":""%>">
+                                            <div class="pic-svg">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                                    viewBox="0 0 24 24">
+                                                    <g fill="#200E32" transform="translate(3 2)">
+                                                        <ellipse cx="9" cy="5.556" opacity=".4" rx="5.625" ry="5.556" />
+                                                        <path
+                                                            d="M17.9902354,16.6757991 L17.9902354,16.6757991 C17.9953097,16.5967226 17.9953097,16.5174327 17.9902354,16.4383562 C17.9679741,16.1461262 17.885058,15.8607505 17.7461199,15.5981735 C17.1993012,14.5296804 15.6662559,14.0456621 14.3870907,13.7716895 C13.4744565,13.5817014 12.5471782,13.4595545 11.6139387,13.4063927 L10.6374767,13.3333333 L10.1980688,13.3333333 L9.6512501,13.3333333 L8.34279105,13.3333333 L7.79597234,13.3333333 L7.35656445,13.3333333 L6.38010248,13.4063927 C5.44686291,13.4595545 4.51958466,13.5817014 3.60695046,13.7716895 C2.32778527,14.0091324 0.794739971,14.5022831 0.247921264,15.5981735 C0.10898315,15.8607505 0.0260670984,16.1461262 0.00380576968,16.4383562 C-0.00126858989,16.5174327 -0.00126858989,16.5967226 0.00380576968,16.6757991 L0.00380576968,16.6757991 C-0.000879294659,16.7548861 -0.000879294659,16.834155 0.00380576968,16.913242 C0.0303656032,17.2029741 0.116574533,17.4851701 0.257685884,17.7442922 C0.804504591,18.8127854 2.33754989,19.2968037 3.61671508,19.5707763 C4.53104892,19.7518719 5.45762024,19.8739256 6.3898671,19.9360731 L7.36632907,20 L7.60067995,20 L7.80573696,20 L10.2078334,20 L10.4128904,20 L10.6472413,20 L11.6237033,19.9360731 C12.5559501,19.8739256 13.4825215,19.7518719 14.3968553,19.5707763 C15.6760205,19.3242009 17.2090658,18.8401826 17.7558845,17.7442922 C17.890425,17.4769528 17.9730826,17.1893744 18,16.8949772 C18.0012406,16.8218031 17.9979804,16.748623 17.9902354,16.6757991 Z" />
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div class="mailName">
+                                                <%=recievedMails[i].from.name%>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <% } %>
+                                        <% } %>
+                        </div>
+                    </div>
+                    <div class="mail">
+                        <% if(flag===0) { %>
+                            <div class="noneSelect">
+                                <div class="mailIcon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                                        class="bi bi-envelope-paper" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 0a2 2 0 0 0-2 2v1.133l-.941.502A2 2 0 0 0 0 5.4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5.4a2 2 0 0 0-1.059-1.765L14 3.133V2a2 2 0 0 0-2-2H4Zm10 4.267.47.25A1 1 0 0 1 15 5.4v.817l-1 .6v-2.55Zm-1 3.15-3.75 2.25L8 8.917l-1.25.75L3 7.417V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v5.417Zm-11-.6-1-.6V5.4a1 1 0 0 1 .53-.882L2 4.267v2.55Zm13 .566v5.734l-4.778-2.867L15 7.383Zm-.035 6.88A1 1 0 0 1 14 15H2a1 1 0 0 1-.965-.738L8 10.083l6.965 4.18ZM1 13.116V7.383l4.778 2.867L1 13.117Z" />
+                                    </svg>
+                                </div>
+                                <div class="note">
+                                    Click compose to send a Mail or click on any Mail to view it
+                                </div>
+                            </div>
+                            <% }else if(flag===1){ %>
+                                <div class="mailform">
+                                    <%- include(' ../partials/mailform.ejs') %>
+                                </div>
+                                <% }else if(flag===2) {%>
+                                    <div class="displayMail">
+                                        <% if(mail){ %>
+                                            <section>
+                                                <label for="from" class="compose-label">From : </label>
+                                                <input type="text" id="to" name="to" class="compose-input"
+                                                    value="<%= mail.from.name %> " disabled>
+                                                </span>
+                                            </section>
+                                            <section>
+                                                <label for="to" class="compose-label">To : </label>
+                                                <input type="text" id="to" name="to" class="compose-input"
+                                                    value="<%= currentUser.name %>" disabled>
+                                            </section>
+                                            <hr>
+                                            <!-- <label for="timeStamp" class="compose-label">
+                                                <%= //mail.timeStamp%>
+                                            </label> -->
+                                            <section>
+                                                <label for="mail-data" class="compose-label">Mail : </label>
+                                                <textarea name="mailData" id="mail-data" cols="30" rows="10"
+                                                    class="compose-data" required minlength="10" maxlength="300"
+                                                    disabled><%= mail.content %> </textarea>
+                                            </section>
+                                            <a href="/user/<%=currentUser._id%>/mailbox/<%=mail._id%>/mark_as_read"
+                                                class="mail-read" <%=mail.read?"disabled":""%> >Mark
+                                                as read</a>
+                                            <a class="mail-read"
+                                                href="/user/<%=currentUser._id%>/mailbox/<%=mail._id%>/delete"
+                                                <%=!mail.read?"disabled":""%>>
+                                                Delete</a>
+                                            <% } %>
+
+                                    </div>
+                                    <% } %>
+                    </div>
+                </div>
+        </div>
+        <script src="/./javascript/closeFlash.js"></script>
+</body>
+
+</html>

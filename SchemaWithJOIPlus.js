@@ -22,4 +22,13 @@ const userSchema = Joi.object({
         .required(),
 });
 
-export { userSchema };
+const mailSchema = Joi.object({
+    mailData: Joi.string()
+        .required()
+        .min(10)
+        .max(300),
+    to: Joi.string()
+        .required()
+})
+
+export { userSchema, mailSchema };

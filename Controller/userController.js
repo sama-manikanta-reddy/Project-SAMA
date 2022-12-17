@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt';
 import Friend from "./../models/friends.js";
 import RequestTab from "./../models/request.js";
 import User from "./../models/user.js";
+import Mail from './../models/mail.js';
 
 const userControl = {};
 
@@ -32,6 +33,10 @@ userControl.deleteAccount = async (req, res) => {
         const deletedUser = await User.findByIdAndDelete(id);
         await Friend.findByIdAndDelete(deletedUser.friendsList);
         await RequestTab.findByIdAndDelete(deletedUser.requests);
+        const mailList = await Mail.find({ $or: [{ from: deletedUser._id }, { to: deletedUser._id }] });
+        for (let i = 0; i < mailList.length; i++) {
+            await Mail.findByIdAndDelete(mailList[i]._id);
+        }
         req.session.destroy();
         res.redirect('/login');
     } else {
@@ -77,6 +82,6 @@ userControl.requestAccepted = async (req, res) => {
     const friend_friendslist = await Friend.findByIdAndUpdate(friendAcc.friendsList, { $push: { list: { _id: id } } });
     const request = await RequestTab.findByIdAndUpdate(user.requests, { $pull: { friendRequests: { from: friendId } } });
     res.redirect(`/user/${id}`);
-}
+};
 
 export { userControl };

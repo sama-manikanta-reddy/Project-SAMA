@@ -1,6 +1,6 @@
 import User from "./models/user.js";
 import RequestTab from "./models/request.js";
-import { userSchema } from "./SchemaWithJOIPlus.js";
+import { mailSchema, userSchema } from "./SchemaWithJOIPlus.js";
 import { ExpressError } from "./ExpressError.js";
 const nocache = function (req, res, next) {
     res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
@@ -14,6 +14,12 @@ const requireLogin = (req, res, next) => {
     }
     next();
 }
+
+const restrictPages = (req, res, next) => {
+    if (req.session.user_id)
+        res.redirect(`/user/${res.locals.currentUser._id}`)
+    next();
+};
 
 /*
 const isAuthenticated = async (req, res, next) => {
@@ -63,9 +69,19 @@ const validateUser = (req, res, next) => {
     if (result.error) {
         throw new ExpressError(result.error.details.map(el => el.message).join(','), 400);
     } else {
+        // console.log('Middleware works'); //To check whether it works or not
+        next();
+    }
+}
+
+const validateMail = (req, res, next) => {
+    const result = mailSchema.validate(req.body);
+    if (result.error) {
+        throw new ExpressError(result.error.details.map(el => el.message).join(','), 400);
+    } else {
         console.log('Middleware works'); //To check whether it works or not
         next();
     }
 }
 
-export { nocache, requireLogin, assignResLocals, sessionConfig, wrapAsync, validateUser };
+export { nocache, requireLogin, assignResLocals, sessionConfig, wrapAsync, validateUser, validateMail, restrictPages };

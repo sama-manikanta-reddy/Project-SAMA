@@ -16,6 +16,6 @@ router.get('/request', requireLogin, wrapAsync(userControl.sendRequest));
 
 router.delete('/request/:reqId', requireLogin, wrapAsync(userControl.deleteRequest));
 
-router.post('/request/:friendId/accepted', wrapAsync(userControl.requestAccepted));
+router.post('/request/:friendId/accepted', requireLogin, wrapAsync(userControl.requestAccepted));
 
 export { router };
