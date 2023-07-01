@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuthProject</title>
+    <title>Project-SAMA</title>
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="./stylesheets/navbarStyles.css">
-    <link rel="stylesheet" href="./stylesheets/layoutStyle.css">
+    <link rel="stylesheet" href="./stylesheets/homepage.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,11 +15,18 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@1,300&family=Freehand&family=Nunito+Sans&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <%- include('./partials/navbar.ejs') %>
-        <%- include('./partials/flash.ejs') %>
+    <nav>
+        <h3 class="navbar-title">Project - SAMA</h3>
+        <ul class="navbar-links">
+            <li class="nav-link"><a href="/login">Login</a></li>
+            <li class="nav-link"><a href="/register">Register</a></li>
+        </ul>
+    </nav>
+
 </body>
 
 </html>

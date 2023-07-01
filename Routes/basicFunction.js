@@ -4,7 +4,7 @@ import { nocache, wrapAsync, validateUser, restrictPages } from "../middlewares.
 
 const router = express.Router();
 
-router.get('/', nocache, basicControl.home);
+router.get('/', nocache, restrictPages, basicControl.home);
 
 router.route('/register')
     .get(nocache, restrictPages, basicControl.registrationForm)

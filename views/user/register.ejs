@@ -9,6 +9,7 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="./stylesheets/navbarStyles.css">
     <link rel="stylesheet" href="./stylesheets/layoutStyle.css">
+    <link rel="stylesheet" href="../stylesheets/flashStyles.css">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,48 +22,49 @@
 <body>
     <%- include('../partials/navbar.ejs') %>
         <div class="container">
-            <div class="register-card">
-                <div class="register-card-body">
-                    <h2 class="register-card-title">Register</h2>
-                    <form action="/register" method="post" class="needs-validation register-form">
-                        <div class="row">
-                            <section class="col-2">
-                                <label for="user[username]" class="form-label">Username </label>
-                                <input type="text" name="username" id="user[username]" class="form-control"
-                                    minlength="8" maxlength="20" required>
+            <%- include('../partials/flash.ejs') %>
+                <div class="register-card">
+                    <div class="register-card-body">
+                        <h2 class="register-card-title">Register</h2>
+                        <form action="/register" method="post" class="needs-validation register-form">
+                            <div class="row">
+                                <section class="col-2">
+                                    <label for="user[username]" class="form-label">Username </label>
+                                    <input type="text" name="username" id="user[username]" class="form-control"
+                                        minlength="8" maxlength="20" required>
+                                </section>
+                                <section class="col-2">
+                                    <label for="user[name]" class="form-label">Name </label>
+                                    <input type="text" name="name" id="user[name]" class="form-control" minlength="2"
+                                        required>
+                                </section>
+                            </div>
+                            <div class="row">
+                                <section class="col-2">
+                                    <label for="user[password]" class="form-label">Password </label>
+                                    <input type="password" name="password" id="user[password]" class="form-control"
+                                        minlength="8" required>
+                                </section>
+                                <section class="col-2">
+                                    <label for="user[phoneNumber]" class="form-label">Phone Number </label>
+                                    <input type="number" name="phoneNumber" id="user[phoneNumber]" class="form-control"
+                                        minlength="10" maxlength="10" required>
+                                </section>
+                            </div>
+                            <div class="row">
+                                <section class="col-center">
+                                    <label for="user[email]" class="form-label">email </label>
+                                    <input type="email" name="email" id="user[email]" class="form-control" required>
+                                </section>
+                            </div>
+                            <section>
+                                <button type="submit" class="register-btn">Register</button>
+                                <a href="/login" class="link">Already have an account ? <span
+                                        style="display: block;">Login</span> </a>
                             </section>
-                            <section class="col-2">
-                                <label for="user[name]" class="form-label">Name </label>
-                                <input type="text" name="name" id="user[name]" class="form-control" minlength="2"
-                                    required>
-                            </section>
-                        </div>
-                        <div class="row">
-                            <section class="col-2">
-                                <label for="user[password]" class="form-label">Password </label>
-                                <input type="password" name="password" id="user[password]" class="form-control"
-                                    minlength="8" required>
-                            </section>
-                            <section class="col-2">
-                                <label for="user[phoneNumber]" class="form-label">Phone Number </label>
-                                <input type="number" name="phoneNumber" id="user[phoneNumber]" class="form-control"
-                                    minlength="10" maxlength="10" required>
-                            </section>
-                        </div>
-                        <div class="row">
-                            <section class="col-center">
-                                <label for="user[email]" class="form-label">email </label>
-                                <input type="email" name="email" id="user[email]" class="form-control" required>
-                            </section>
-                        </div>
-                        <section>
-                            <button type="submit" class="register-btn">Register</button>
-                            <a href="/login" class="link">Already have an account ? <span
-                                    style="display: block;">Login</span> </a>
-                        </section>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
         </div>
         <script>
             (() => {
@@ -84,7 +86,7 @@
                 })
             })()
         </script>
-
+        <script src="../javascript/closeFlash.js"></script>
 </body>
 
 </html>

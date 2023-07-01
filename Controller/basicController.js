@@ -2,11 +2,11 @@ import Friend from "./../models/friends.js";
 import RequestTab from "./../models/request.js";
 import User from "./../models/user.js";
 import bcrypt from 'bcrypt';
+import { ExpressError } from "../ExpressError.js";
 const basicControl = {};
 
 basicControl.home = (req, res) => {
-    // res.render('./home.ejs');
-    res.redirect('/login')
+    res.render('./home.ejs');
 };
 
 basicControl.registrationForm = (req, res) => {
@@ -14,16 +14,23 @@ basicControl.registrationForm = (req, res) => {
 };
 
 basicControl.register = async (req, res) => {
-    const newUser = new User(req.body);
-    const friendsList = new Friend({});
-    const requestTab = new RequestTab({});
-    await requestTab.save();
-    await friendsList.save();
-    newUser.friendsList = friendsList._id;
-    newUser.requests = requestTab._id;
-    await newUser.save();
-    req.session.user_id = newUser._id
-    res.redirect(`/user/${newUser._id}`)
+    const userFound = await User.findOne({ username: req.body.username.toLowerCase() })
+    if (userFound) {
+        req.flash('error', 'username already taken!');
+        res.redirect('./register');
+    }
+    else {
+        const newUser = new User(req.body);
+        const friendsList = new Friend({});
+        const requestTab = new RequestTab({});
+        await requestTab.save();
+        await friendsList.save();
+        newUser.friendsList = friendsList._id;
+        newUser.requests = requestTab._id;
+        await newUser.save();
+        req.session.user_id = newUser._id
+        res.redirect(`/user/${newUser._id}`)
+    }
 };
 
 basicControl.loginPage = (req, res) => {
